@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div id="home-main-container">
+    <div class="main-advert-container">
+        <img src="../static/assets/images/image_2.jfif?{{cache_id}}"></img>
+    </div>
+    <div class="explore-products" >
+            <h1 class="products title" style="font-family: sans-serif;">Explore</h1>
+            <div class="explore-prod-trending-btns">
+                <button class="slide-e-btn" id="seb-right"><i class="fa-solid fa-caret-right"></i></button>
+                <button class="slide-e-btn" id="seb-left"><i class="fa-solid fa-caret-left"></i></button>
+            </div>
+            <div class="explore-prod-trending">
+                {% for i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] %}
+                <a href="/t/Addidas_shoe/f6ca86cb-5ad4-44f8-a529-c091329ea776" style="text-decoration: none; color: inherit;">
+                <div class="item-card">
+                    <div class="item-c-image">
+                        <img class="item-c-image-pc" src="../static/assets/images/shoe1.png?{{cache_id}}"></img>
+                    </div>
+                    <div class="item-c-details">
+                        <span class="item-c-image-name" style="font-weight: bold;"> 🏷️ Addidas Shoe</span>
+                        <span class="item-c-image-price" style="font-weight: bold;"> 💰 Ksh 4000</span>
+                    </div>
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+    </div>
+    
+    <div class="just_product">
+                <div>
+                    <h1 class="mmc-b-title"></h1>
+                    <div class="jp-one-nb">
+                        <button class="slide-e-btn" id="jp-1-seb-right"><i class="fa-solid fa-caret-right"></i></button>
+                        <button class="slide-e-btn" id="jp-1-seb-left"><i class="fa-solid fa-caret-left"></i></button>
+                    </div>
+                </div>
+                <div class="jp-cont" id="just-products-1">
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                </div>
+                <div class="jproduct-top">
+                    <h1 class="mmc-b-title"></h1>
+                    <div class="jp-two-nb">
+                        <button class="slide-e-btn" id="jp-2-seb-right"><i class="fa-solid fa-caret-right"></i></button>
+                        <button class="slide-e-btn" id="jp-2-seb-left"><i class="fa-solid fa-caret-left"></i></button>
+                    </div>
+                </div>
+                <div class="jp-cont" id="just-products-2">
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                </div>
+                <div>
+                <div class="jproduct-top">
+                    <h1 class="mmc-b-title"></h1>
+                    <div class="jp-two-nb">
+                        <button class="slide-e-btn" id="jp-3-seb-right"><i class="fa-solid fa-caret-right"></i></button>
+                        <button class="slide-e-btn" id="jp-3-seb-left"><i class="fa-solid fa-caret-left"></i></button>
+                    </div>
+                </div>
+                <div class="jp-cont" id="just-products-3">
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                </div>
+                <div class="jproduct-top">
+                    <h1 class="mmc-b-title"></h1>
+                    <div class="jp-two-nb">
+                        <button class="slide-e-btn" id="jp-4-seb-right"><i class="fa-solid fa-caret-right"></i></button>
+                        <button class="slide-e-btn" id="jp-4-seb-left"><i class="fa-solid fa-caret-left"></i></button>
+                    </div>
+                </div>
+                <div class="jp-cont" id="just-products-4" >
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                    <div class="product placeholder"></div>
+                </div>
+                <script type="text/javascript">
+                $(document).ready(function() {
+
+                    $("#jp-4-seb-left").click(function () {
+                        $("#just-products-4").animate({
+                            scrollLeft: "-=251px"
+                        }, 400);
+                    });
+
+                    $("#jp-4-seb-right").click(function () {
+                        $("#just-products-4").animate({
+                            scrollLeft: "+=251px"
+                        }, 400);
+                    });
+
+                    $("#jp-3-seb-left").click(function () {
+                        $("#just-products-3").animate({
+                            scrollLeft: "-=251px"
+                        }, 400);
+                    });
+
+                    $("#jp-3-seb-right").click(function () {
+                        $("#just-products-3").animate({
+                            scrollLeft: "+=251px"
+                        }, 400);
+                    });
+
+                     $("#jp-2-seb-left").click(function () {
+                        $("#just-products-2").animate({
+                            scrollLeft: "-=251px"
+                        }, 400);
+                    });
+
+                    $("#jp-2-seb-right").click(function () {
+                        $("#just-products-2").animate({
+                            scrollLeft: "+=251px"
+                        }, 400);
+                    });
+
+                     $("#jp-1-seb-left").click(function () {
+                        $("#just-products-1").animate({
+                            scrollLeft: "-=251px"
+                        }, 400);
+                    });
+
+                    $("#jp-1-seb-right").click(function () {
+                        $("#just-products-1").animate({
+                            scrollLeft: "+=251px"
+                        }, 400);
+                    });
+
+
+                        $.ajax({
+                            url: 'https://fakestoreapi.com/products',
+                            type: 'GET',
+                            success: function (products) {
+
+                                    var productIndex = 0;
+
+                                    $('.jp-cont').each(function() {
+
+                                        const $container = $(this);
+                                        const $placeholders = $container.find('.placeholder');
+                                        
+                                        $placeholders.each(function() {
+                                            const p = products[productIndex];
+                                            const tTitle = p.title.split(' ').slice(0, 4).join(' ') + (p.title.split(' ').length > 4 ? '...' : '');
+
+                                            if (productIndex < products.length) {
+                                                
+                                                    const $productE = $('<div>', { class: 'product' }).html(`
+                                                        <div class="jp-image-container">
+                                                            <img class="jp-image" src="${p.image}"/>
+                                                        </div>
+                                                        <h3>${tTitle}</h3>
+                                                        <p>Price: $${p.price}</p>`);
+                                                    $(this).replaceWith($productE);
+                                                    productIndex++;
+                                                }
+                                            });
+                                        })}
+                                });
+                    });
+                </script>
+    </div>
+</div>
+{% endblock %}
